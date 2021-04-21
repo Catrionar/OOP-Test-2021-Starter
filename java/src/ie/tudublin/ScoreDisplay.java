@@ -11,6 +11,8 @@ public class ScoreDisplay extends PApplet
 	String score = "D2E2F2G2A2B2c2d2";
 	//String score = "DEF2F2F2EFA2A2B2AFD2E2D2D2D2";
 
+	String letters;
+
 	ArrayList<Note> notes = new ArrayList<Note>();
 	
 	public void settings()
@@ -25,6 +27,7 @@ public class ScoreDisplay extends PApplet
 
 	public void setup() 
 	{
+		colorMode(RGB);
 		loadScore();
 		printScores();
 	}
@@ -32,7 +35,7 @@ public class ScoreDisplay extends PApplet
 	public void draw()
 	{
 		background(255);
-		
+		drawStave();
 	}
 
 	void loadScore()
@@ -45,6 +48,7 @@ public class ScoreDisplay extends PApplet
 			if(Character.isDigit(score.charAt(i)) == false)
 			{
 				d = 1;
+				letters += score.charAt(i);
 			}
 			else
 			{
@@ -58,9 +62,30 @@ public class ScoreDisplay extends PApplet
 
 	void printScores()
 	{
-		for(int i =0; i < notes.size(); i++)
+		for(int i = 0; i < notes.size(); i++)
 		{
 			System.out.print(notes.get(i) + "\n");
+		}
+	}
+
+	void drawStave()
+	{
+		float border = 0.1f * width;
+
+		for(int i = 0; i < 5; i++)
+		{
+			//float x = map(i, 0, notes.size(), border, width - border);
+			float y = map(i, 0, 5, border, height - border);
+			stroke(0);
+			line(border, y, width - border, y);
+			fill(0);
+			//text(score.charAt(i), x, border / 2);
+		}
+
+		for(int i = 0; i <= notes.size(); i++)
+		{
+			float x = map(i, 0, notes.size(), border, width - border);
+			text(score.charAt(i), x, border / 2);
 		}
 	}
 
