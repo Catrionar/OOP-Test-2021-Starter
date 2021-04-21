@@ -88,14 +88,62 @@ public class ScoreDisplay extends PApplet
 		
 	}
 
-	float prev = 0.1f * width + 30;
+	float prev;
+	int num = 0;
+	
 
-	void drawNotes()
+	void drawCircle(float nx, float ny, int num)
 	{
 		float border = 0.1f * width;
 		int size = 30;
 		float w = size / (float) 2;
 		float ll = 85 + w;
+		//int num = 0;
+
+		if(num == 0)
+		{
+			prev = border + w;
+		}
+
+		float x = map(nx, 0, notes.size(), border, width - border);
+		float y = map(ny, 0, 10, border, height - (border * 2));
+				
+		if(mouseX < x + size && mouseX > prev + size )
+		{
+			stroke(255, 0, 0);
+			fill(255, 0, 0);
+		}
+		else if(mouseX < x + size && num == 0)
+		{
+			prev = border + w;
+			stroke(255, 0, 0);
+			fill(255, 0, 0);
+		}
+		else
+		{
+			stroke(0);
+			fill(0);
+		}
+
+		prev = x;
+
+		circle(x, y , size);
+		line(x + w, y, x + w, y - ll);
+	}
+
+	void drawT(float nx, float ny)
+	{
+		float border = 0.1f * width;
+		int size = 30;
+		float w = size / (float) 2;
+		float ll = 85 + w;
+		float x = map(nx, 0, notes.size(), border, width - border);
+		float y = map(ny, 0, 10, border, height - (border * 2));
+		line(x + w, y - ll, x + (w*2), y  - ll + w);
+	}
+
+	void drawNotes()
+	{
 		int num = 0;
 		
 
@@ -106,36 +154,12 @@ public class ScoreDisplay extends PApplet
 				float nx = num;
 				float ny = 9;
 
-				float x = map(nx, 0, notes.size(), border, width - border);
-				float y = map(ny, 0, 10, border, height - (border * 2));
-				
-				if(mouseX < x + size && mouseX > prev + size )
-				{
-					stroke(255, 0, 0);
-					fill(255, 0, 0);
-				}
-				else if(mouseX < x + size && num == 0)
-				{
-					stroke(255, 0, 0);
-					fill(255, 0, 0);
-				}
-				else
-				{
-					stroke(0);
-					fill(0);
-				}
+				drawCircle(nx, ny, num);
 
-				prev = x;
-
-				circle(x, y , size);
-				line(x + w, y, x + w, y - ll);
-
-	
 				if(notes.get(i).getType() == "Quaver")
 				{
-					line(x + w, y - ll, x + (w*2), y  - ll + w);
+					drawT(nx, ny);
 				}
-
 				
 			}
 			
@@ -144,27 +168,11 @@ public class ScoreDisplay extends PApplet
 				float nx = num;
 				float ny = 8;
 
-				float x = map(nx, 0, notes.size(), border, width - border);
-				float y = map(ny, 0, 10, border, height - (border * 2));
-
-				if(mouseX < x + size && mouseX > prev + size )
-				{
-					stroke(255, 0, 0);
-					fill(255, 0, 0);
-				}
-				else
-				{
-					stroke(0);
-					fill(0);
-				}
-				prev = x;
-
-				circle(x, y , size);
-				line(x + w, y, x + w, y - ll);
+				drawCircle(nx, ny, num);
 
 				if(notes.get(i).getType() == "Quaver")
 				{
-					line(x + w, y - ll, x + (w*2), y  - ll + w);
+					drawT(nx, ny);
 				}
 			}
 			
@@ -173,27 +181,11 @@ public class ScoreDisplay extends PApplet
 				float nx = num;
 				float ny = 7;
 
-				float x = map(nx, 0, notes.size(), border, width - border);
-				float y = map(ny, 0, 10, border, height - (border * 2));
-
-				if(mouseX < x + size && mouseX > prev + size )
-				{
-					stroke(255, 0, 0);
-					fill(255, 0, 0);
-				}
-				else
-				{
-					stroke(0);
-					fill(0);
-				}
-				prev = x;
-
-				circle(x, y , size);
-				line(x + w, y, x + w, y - ll);
+				drawCircle(nx, ny, num);
 
 				if(notes.get(i).getType() == "Quaver")
 				{
-					line(x + w, y - ll, x + (w*2), y  - ll + w);
+					drawT(nx, ny);
 				}
 
 			}
@@ -203,27 +195,11 @@ public class ScoreDisplay extends PApplet
 				float nx = num;
 				float ny = 6;
 
-				float x = map(nx, 0, notes.size(), border, width - border);
-				float y = map(ny, 0, 10, border, height - (border * 2));
-
-				if(mouseX < x + size && mouseX > prev + size )
-				{
-					stroke(255, 0, 0);
-					fill(255, 0, 0);
-				}
-				else
-				{
-					stroke(0);
-					fill(0);
-				}
-				prev = x;
-
-				circle(x, y , size);
-				line(x + w, y, x + w, y - ll);
+				drawCircle(nx, ny, num);
 
 				if(notes.get(i).getType() == "Quaver")
 				{
-					line(x + w, y - ll, x + (w*2), y  - ll + w);
+					drawT(nx, ny);
 				}
 			}
 			
@@ -232,27 +208,11 @@ public class ScoreDisplay extends PApplet
 				float nx = num;
 				float ny = 5;
 
-				float x = map(nx, 0, notes.size(), border, width - border);
-				float y = map(ny, 0, 10, border, height - (border * 2));
-
-				if(mouseX < x + size && mouseX > prev + size )
-				{
-					stroke(255, 0, 0);
-					fill(255, 0, 0);
-				}
-				else
-				{
-					stroke(0);
-					fill(0);
-				}
-				prev = x;
-
-				circle(x, y , size);
-				line(x + w, y, x + w, y - ll);
+				drawCircle(nx, ny, num);
 
 				if(notes.get(i).getType() == "Quaver")
 				{
-					line(x + w, y - ll, x + (w*2), y  - ll + w);
+					drawT(nx, ny);
 				}
 			}
 			
@@ -261,27 +221,11 @@ public class ScoreDisplay extends PApplet
 				float nx = num;
 				float ny = 4;
 
-				float x = map(nx, 0, notes.size(), border, width - border);
-				float y = map(ny, 0, 10, border, height - (border * 2));
-
-				if(mouseX < x + size && mouseX > prev + size )
-				{
-					stroke(255, 0, 0);
-					fill(255, 0, 0);
-				}
-				else
-				{
-					stroke(0);
-					fill(0);
-				}
-				prev = x;
-
-				circle(x, y , size);
-				line(x + w, y, x + w, y - ll);
+				drawCircle(nx, ny, num);
 
 				if(notes.get(i).getType() == "Quaver")
 				{
-					line(x + w, y - ll, x + (w*2), y  - ll + w);
+					drawT(nx, ny);
 				}
 			}
 			
@@ -290,27 +234,11 @@ public class ScoreDisplay extends PApplet
 				float nx = num;
 				float ny = 3;
 
-				float x = map(nx, 0, notes.size(), border, width - border);
-				float y = map(ny, 0, 10, border, height - (border * 2));
-
-				if(mouseX < x + size && mouseX > prev + size )
-				{
-					stroke(255, 0, 0);
-					fill(255, 0, 0);
-				}
-				else
-				{
-					stroke(0);
-					fill(0);
-				}
-				prev = x;
-
-				circle(x, y , size);
-				line(x + w, y, x + w, y - ll);
+				drawCircle(nx, ny, num);
 
 				if(notes.get(i).getType() == "Quaver")
 				{
-					line(x + w, y - ll, x + (w*2), y  - ll + w);
+					drawT(nx, ny);
 				}
 			}
 			
@@ -319,27 +247,11 @@ public class ScoreDisplay extends PApplet
 				float nx = num;
 				float ny = 2;
 
-				float x = map(nx, 0, notes.size(), border, width - border);
-				float y = map(ny, 0, 10, border, height - (border * 2));
-
-				if(mouseX < x + size && mouseX > prev + size )
-				{
-					stroke(255, 0, 0);
-					fill(255, 0, 0);
-				}
-				else
-				{
-					stroke(0);
-					fill(0);
-				}
-				prev = x;
-
-				circle(x, y , size);
-				line(x + w, y, x + w, y - ll);
+				drawCircle(nx, ny, num);
 
 				if(notes.get(i).getType() == "Quaver")
 				{
-					line(x + w, y - ll, x + (w*2), y  - ll + w);
+					drawT(nx, ny);
 				}
 			}
 			num += 1;
