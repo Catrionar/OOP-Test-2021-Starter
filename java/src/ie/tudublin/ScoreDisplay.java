@@ -12,7 +12,7 @@ public class ScoreDisplay extends PApplet
 	//String score = "D2E2F2G2A2B2c2d2";
 	String score = "DEF2F2F2EFA2A2B2AFD2E2D2D2D2";
 
-	ArrayList<Note> notes = new ArrayList<Note>();
+	ArrayList<Note> notes = new ArrayList<Note>();5
 	
 	public void settings()
 	{
@@ -48,7 +48,8 @@ public class ScoreDisplay extends PApplet
 			char c = score.charAt(i-1);
 			int t = c - '0';
 			int d;
-			if(Character.isDigit(score.charAt(i)) == false)
+			if(Character.isDigit(score.charAt(i)) == false) // if there is no number after the letter, it is a quaver,
+															// 1 is sent as the duration, if there is a number 2 is sent 
 			{
 				d = 1;
 			}
@@ -91,14 +92,13 @@ public class ScoreDisplay extends PApplet
 	float prev;
 	int num = 0;
 	
-
+	// method to draw the notes, to minimise the amount of code needed in drawNotes()
 	void drawCircle(float nx, float ny, int num)
 	{
 		float border = 0.1f * width;
 		int size = 30;
 		float w = size / (float) 2;
 		float ll = 85 + w;
-		//int num = 0;
 
 		if(num == 0)
 		{
@@ -131,21 +131,23 @@ public class ScoreDisplay extends PApplet
 		line(x + w, y, x + w, y - ll);
 	}
 
+	// when the note is a quaver this method is called and the tick is drawn 
 	void drawT(float nx, float ny)
 	{
 		float border = 0.1f * width;
 		int size = 30;
 		float w = size / (float) 2;
 		float ll = 85 + w;
+
 		float x = map(nx, 0, notes.size(), border, width - border);
 		float y = map(ny, 0, 10, border, height - (border * 2));
+
 		line(x + w, y - ll, x + (w*2), y  - ll + w);
 	}
 
 	void drawNotes()
 	{
-		int num = 0;
-		
+		int num = 0;  // used for when notes appear multiply times
 
 		for(int i = 0; i < notes.size(); i++)
 		{	
