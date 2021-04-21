@@ -17,6 +17,14 @@ public class Note {
         }
     }
 
+    public char getNote() {
+        return note;
+    }
+
+    public void setNote(char note) {
+        this.note = note;
+    }
+
     @Override
     public String toString()
     {
