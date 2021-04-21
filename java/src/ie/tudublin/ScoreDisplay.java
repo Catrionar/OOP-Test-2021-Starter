@@ -9,8 +9,8 @@ import processing.core.PApplet;
 public class ScoreDisplay extends PApplet
 {
 	//String score = "DEFGABcd";
-	String score = "D2E2F2G2A2B2c2d2";
-	//String score = "DEF2F2F2EFA2A2B2AFD2E2D2D2D2";
+	//String score = "D2E2F2G2A2B2c2d2";
+	String score = "DEF2F2F2EFA2A2B2AFD2E2D2D2D2";
 
 	ArrayList<Note> notes = new ArrayList<Note>();
 	
@@ -43,12 +43,12 @@ public class ScoreDisplay extends PApplet
 
 	void loadScore()
 	{
-		for(int i = 0; i < score.length(); i++)
+		for(int i = 1; i < score.length(); i++)
 		{
-			char c = score.charAt(i);
+			char c = score.charAt(i-1);
 			int t = c - '0';
 			int d;
-			if(Character.isDigit(score.charAt(i+1)) == false)
+			if(Character.isDigit(score.charAt(i)) == false)
 			{
 				d = 1;
 			}
@@ -88,6 +88,7 @@ public class ScoreDisplay extends PApplet
 		
 	}
 
+	float prev = 0.1f * width + 30;
 
 	void drawNotes()
 	{
@@ -95,104 +96,253 @@ public class ScoreDisplay extends PApplet
 		int size = 30;
 		float w = size / (float) 2;
 		float ll = 85 + w;
+		int num = 0;
+		
 
 		for(int i = 0; i < notes.size(); i++)
 		{	
 			if(notes.get(i).getNote() == 'D')
 			{
-				float nx = 0;
+				float nx = num;
 				float ny = 9;
 
 				float x = map(nx, 0, notes.size(), border, width - border);
 				float y = map(ny, 0, 10, border, height - (border * 2));
+				
+				if(mouseX < x + size && mouseX > prev + size )
+				{
+					stroke(255, 0, 0);
+					fill(255, 0, 0);
+				}
+				else if(mouseX < x + size && num == 0)
+				{
+					stroke(255, 0, 0);
+					fill(255, 0, 0);
+				}
+				else
+				{
+					stroke(0);
+					fill(0);
+				}
+
+				prev = x;
 
 				circle(x, y , size);
 				line(x + w, y, x + w, y - ll);
+
+	
+				if(notes.get(i).getType() == "Quaver")
+				{
+					line(x + w, y - ll, x + (w*2), y  - ll + w);
+				}
+
+				
 			}
 			
 			if(notes.get(i).getNote() == 'E')
 			{
-				float nx = 1;
+				float nx = num;
 				float ny = 8;
 
 				float x = map(nx, 0, notes.size(), border, width - border);
 				float y = map(ny, 0, 10, border, height - (border * 2));
 
+				if(mouseX < x + size && mouseX > prev + size )
+				{
+					stroke(255, 0, 0);
+					fill(255, 0, 0);
+				}
+				else
+				{
+					stroke(0);
+					fill(0);
+				}
+				prev = x;
+
 				circle(x, y , size);
 				line(x + w, y, x + w, y - ll);
+
+				if(notes.get(i).getType() == "Quaver")
+				{
+					line(x + w, y - ll, x + (w*2), y  - ll + w);
+				}
 			}
 			
 			if(notes.get(i).getNote() == 'F')
 			{
-				float nx = 2;
+				float nx = num;
 				float ny = 7;
 
 				float x = map(nx, 0, notes.size(), border, width - border);
 				float y = map(ny, 0, 10, border, height - (border * 2));
 
+				if(mouseX < x + size && mouseX > prev + size )
+				{
+					stroke(255, 0, 0);
+					fill(255, 0, 0);
+				}
+				else
+				{
+					stroke(0);
+					fill(0);
+				}
+				prev = x;
+
 				circle(x, y , size);
 				line(x + w, y, x + w, y - ll);
+
+				if(notes.get(i).getType() == "Quaver")
+				{
+					line(x + w, y - ll, x + (w*2), y  - ll + w);
+				}
+
 			}
 			
 			if(notes.get(i).getNote() == 'G')
 			{
-				float nx = 3;
+				float nx = num;
 				float ny = 6;
 
 				float x = map(nx, 0, notes.size(), border, width - border);
 				float y = map(ny, 0, 10, border, height - (border * 2));
 
+				if(mouseX < x + size && mouseX > prev + size )
+				{
+					stroke(255, 0, 0);
+					fill(255, 0, 0);
+				}
+				else
+				{
+					stroke(0);
+					fill(0);
+				}
+				prev = x;
+
 				circle(x, y , size);
 				line(x + w, y, x + w, y - ll);
+
+				if(notes.get(i).getType() == "Quaver")
+				{
+					line(x + w, y - ll, x + (w*2), y  - ll + w);
+				}
 			}
 			
 			if(notes.get(i).getNote() == 'A')
 			{
-				float nx = 4;
+				float nx = num;
 				float ny = 5;
 
 				float x = map(nx, 0, notes.size(), border, width - border);
 				float y = map(ny, 0, 10, border, height - (border * 2));
 
+				if(mouseX < x + size && mouseX > prev + size )
+				{
+					stroke(255, 0, 0);
+					fill(255, 0, 0);
+				}
+				else
+				{
+					stroke(0);
+					fill(0);
+				}
+				prev = x;
+
 				circle(x, y , size);
 				line(x + w, y, x + w, y - ll);
+
+				if(notes.get(i).getType() == "Quaver")
+				{
+					line(x + w, y - ll, x + (w*2), y  - ll + w);
+				}
 			}
 			
 			if(notes.get(i).getNote() == 'B')
 			{
-				float nx = 5;
+				float nx = num;
 				float ny = 4;
 
 				float x = map(nx, 0, notes.size(), border, width - border);
 				float y = map(ny, 0, 10, border, height - (border * 2));
 
+				if(mouseX < x + size && mouseX > prev + size )
+				{
+					stroke(255, 0, 0);
+					fill(255, 0, 0);
+				}
+				else
+				{
+					stroke(0);
+					fill(0);
+				}
+				prev = x;
+
 				circle(x, y , size);
 				line(x + w, y, x + w, y - ll);
+
+				if(notes.get(i).getType() == "Quaver")
+				{
+					line(x + w, y - ll, x + (w*2), y  - ll + w);
+				}
 			}
 			
 			if(notes.get(i).getNote() == 'c')
 			{
-				float nx = 6;
+				float nx = num;
 				float ny = 3;
 
 				float x = map(nx, 0, notes.size(), border, width - border);
 				float y = map(ny, 0, 10, border, height - (border * 2));
 
+				if(mouseX < x + size && mouseX > prev + size )
+				{
+					stroke(255, 0, 0);
+					fill(255, 0, 0);
+				}
+				else
+				{
+					stroke(0);
+					fill(0);
+				}
+				prev = x;
+
 				circle(x, y , size);
 				line(x + w, y, x + w, y - ll);
+
+				if(notes.get(i).getType() == "Quaver")
+				{
+					line(x + w, y - ll, x + (w*2), y  - ll + w);
+				}
 			}
 			
 			if(notes.get(i).getNote() == 'd')
 			{
-				float nx = 7;
+				float nx = num;
 				float ny = 2;
 
 				float x = map(nx, 0, notes.size(), border, width - border);
 				float y = map(ny, 0, 10, border, height - (border * 2));
 
+				if(mouseX < x + size && mouseX > prev + size )
+				{
+					stroke(255, 0, 0);
+					fill(255, 0, 0);
+				}
+				else
+				{
+					stroke(0);
+					fill(0);
+				}
+				prev = x;
+
 				circle(x, y , size);
 				line(x + w, y, x + w, y - ll);
+
+				if(notes.get(i).getType() == "Quaver")
+				{
+					line(x + w, y - ll, x + (w*2), y  - ll + w);
+				}
 			}
+			num += 1;
 		}
 		
 	}
